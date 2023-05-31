@@ -425,15 +425,14 @@ public class Main {
         Publicacao audienciaB = new Publicacao(autores, "Artigo", 600, 2020);
         Publicacao audienciaC = new Publicacao(autores, "Artigo", 300, 2020);
         Publicacao audienciaNegativa = new Publicacao(autores, "Artigo", -230, 2020);
-        // Publicacao audienciaCasasDecimais = new Publicacao(autores, "Artigo", 20.5,
+        Publicacao audienciaCasasDecimais = new Publicacao(autores, "Artigo", (int) 20.5, 2020);
         // 2020);
         Publicacao audienciaMuitoGrande = new Publicacao(autores, "Artigo", Integer.MAX_VALUE, 2020);
-        // Publicacao audienciaAlfanumerica = new Publicacao(autores, "Artigo", "2A2",
-        // 2020);
+        Publicacao audienciaAlfanumerica = new Publicacao(autores, "Artigo",Integer.parseInt("2A2") , 2020);
         Publicacao audiencia1000 = new Publicacao(autores, "Artigo", 1000, 2020);
         Publicacao audiencia500 = new Publicacao(autores, "Artigo", 500, 2020);
         Publicacao audiencia0 = new Publicacao(autores, "Artigo", 0, 2020);
-        Publicacao audienciaVazia = new Publicacao(autores, "Artigo", 0, 2020);
+        Publicacao audienciaVazia = new Publicacao(autores, "Artigo", Integer.parseInt(null), 2020);
         Publicacao anoNegativo = new Publicacao(autores, "Artigo", -1000, -2000);
         Publicacao anoFuturo = new Publicacao(autores, "Artigo", 1050, 2300);
         // Publicacao anoCasasDecimais = new Publicacao(autores, "Artigo", 1050,
