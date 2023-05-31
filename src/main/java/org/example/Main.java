@@ -240,33 +240,33 @@ public class Main {
 
 
     //Codigo 1
-    private static String nTotalDePublicacoesPorTipo(ArrayList<Publicacao> publicacoes) {
+    private static String nTotalDePublicacoesPorTipo(ArrayList<Publicacao> publicacoes) {//1
         ComparacaoPorTipo comparacaoPorTipo = new ComparacaoPorTipo();
-        Collections.sort(publicacoes, comparacaoPorTipo);
+        Collections.sort(publicacoes, comparacaoPorTipo); //2
         Publicacao ia = null;
         StringBuilder string = new StringBuilder();
         int count = 0;
 
-        for(Iterator var6 = publicacoes.iterator(); var6.hasNext(); ++count) {
+        for(Iterator var6 = publicacoes.iterator(); var6.hasNext(); ++count) { //3
             Publicacao i = (Publicacao)var6.next();
-            if (publicacoes.indexOf(i) == publicacoes.size() - 1) {
-                if (ia != null && i.getTipo().equals(ia.getTipo())) {
-                    string.append("\n").append(ia.getTipo()).append(":").append(count + 1).append("\n");
-                } else if (ia != null) {
+            if (publicacoes.indexOf(i) == publicacoes.size() - 1) {//4
+                if (ia != null && i.getTipo().equals(ia.getTipo())) {//6
+                    string.append("\n").append(ia.getTipo()).append(":").append(count + 1).append("\n");//9
+                } else if (ia != null) {//8
                     string.append("\n").append(ia.getTipo()).append(":").append(count).append("\n");
-                    string.append("\n").append(i.getTipo()).append(":").append(1).append("\n");
-                } else {
-                    string.append("\n").append(i.getTipo()).append(":").append(1).append("\n");
+                    string.append("\n").append(i.getTipo()).append(":").append(1).append("\n");//10
+                } else {//11
+                    string.append("\n").append(i.getTipo()).append(":").append(1).append("\n");//12
                 }
-            } else if (ia != null && !i.getTipo().equals(ia.getTipo())) {
+            } else if (ia != null && !i.getTipo().equals(ia.getTipo())) { //7
                 string.append("\n").append(ia.getTipo().toUpperCase()).append(":").append(count).append("\n");
                 count = 0;
             }
 
-            ia = i;
+            ia = i;//14
         }
 
-        return string.toString();
+        return string.toString();//5
     }
 
 
@@ -305,31 +305,24 @@ public class Main {
     //Codigo 3
     public static String listaDePublicacoesPorAnoTipoFI(ArrayList<Publicacao> publicacoes) {
         StringBuilder string = new StringBuilder();
-        Collections.sort(publicacoes);
+        Collections.sort (publicacoes);
         Publicacao aux = null;
-        Iterator var3 = publicacoes.iterator();
-
-        while(var3.hasNext()) {
-            Publicacao i = (Publicacao)var3.next();
-            if (aux != null && i.getAno() == aux.getAno()) {
-                if (!i.getTipo().equals(aux.getTipo())) {
-                    string.append("\n\t").append(i.getTipo()).append(":\n").append("\n\t\t").append(i.fatorDeImpacto()).append(":\n");
-                } else if (i.fatorDeImpacto() != aux.fatorDeImpacto()) {
-                    string.append("\n\t\t").append(i.fatorDeImpacto()).append(":\n");
-                }
-            } else {
+        for (Publicacao i : publicacoes) {
+            if (aux == null || i.getAno () != aux.getAno ()){
+                System.out.println("ola");
                 string.append("\n").append(i.getAno()).append(":\n").append("\n\t").append(i.getTipo()).append(":\n").append("\n\t\t").append(i.fatorDeImpacto()).append(":\n");
             }
+            else if(!i.getTipo().equals(aux.getTipo())){
 
+                string.append("\n\t").append(i.getTipo()).append(":\n").append("\n\t\t").append(i.fatorDeImpacto()).append(":\n");}
+            else if(i.fatorDeImpacto() != aux.fatorDeImpacto())
+                string.append("\n\t\t").append(i.fatorDeImpacto()).append(":\n");
             aux = i;
             string.append("\t\t\t\t").append(i.toString()).append("\n");
         }
-
-        if (aux == null) {
-            return "Sem Publicações";
-        } else {
-            return string.toString();
-        }
+        if(aux==null)
+            string.append("Sem Publicações");
+        return string.toString();
     }
 
 
@@ -341,7 +334,7 @@ public class Main {
     public static void main(String[] args) {
 
         //ArrayList<Publicacao> with different sets of Publicacao objects:
-        //Example 1:
+            //Example 1:
         ArrayList<Publicacao> publicacoes1 = new ArrayList<>();
         ArrayList<Investigador> autores1 = new ArrayList<>();
         autores1.add(new Investigador("John Doe", "john.doe@example.com", "Categoria1"));
@@ -350,7 +343,7 @@ public class Main {
         publicacoes1.add(new Publicacao(autores1, "Journal Article", 1200, 2021));
 
 
-        //Example 2:
+            //Example 2:
         ArrayList<Publicacao> publicacoes2 = new ArrayList<>();
         ArrayList<Investigador> autores2 = new ArrayList<>();
         autores2.add(new Investigador("Alice Johnson", "alice.johnson@example.com", "Categoria1"));
@@ -361,7 +354,7 @@ public class Main {
         publicacoes2.add(new Publicacao(autores2, "Book Chapter", 400, 2022));
 
 
-        //Example 3:
+            //Example 3:
         ArrayList<Publicacao> publicacoes3 = new ArrayList<>();
         ArrayList<Investigador> autores3 = new ArrayList<>();
         autores3.add(new Investigador("Emily Davis", "emily.davis@example.com", "Categoria1"));
@@ -370,19 +363,17 @@ public class Main {
         publicacoes3.add(new Publicacao(autores3, "Book Chapter", 600, 2020));
 
 
-        //Example 4:
+            //Example 4:
         ArrayList<Publicacao> publicacoes4 = new ArrayList<>();
         ArrayList<Investigador> autores4 = new ArrayList<>();
         autores4.add(new Investigador("Michael Brown", "michael.brown@example.com", "Estudante"));
         autores4.add(new Investigador("Sophia Wilson", "sophia.wilson@example.com" ,"Categoria2"));
         autores4.add(new Investigador("Daniel Smith", "daniel.smith@example.com", "Categoria3"));
         publicacoes4.add(new Publicacao(autores4, "Conference Paper", 400, 2022));
-        publicacoes4.add(new Publicacao(autores4, "Journal Article", 1100, 2021));
-        publicacoes4.add(new Publicacao(autores4, "Book Chapter", 500, 2023));
+        publicacoes4.add(new Publicacao(autores4, "Journal Article", 900, 2022));
 
 
-
-        System.out.println(listaDePublicacoesPorAnoTipoFI(publicacoes4));
+        //System.out.println(listaDePublicacoesPorAnoTipoFI(publicacoes4));
         System.out.println(listaDePublicacoesPorAnoTipoFI(publicacoes4));
 
     }
