@@ -231,7 +231,7 @@ public class Main {
     // Codigo 1
     static String nTotalDePublicacoesPorTipo(ArrayList<Publicacao> publicacoes) {
         ComparacaoPorTipo comparacaoPorTipo = new ComparacaoPorTipo();
-        Collections.sort(publicacoes, comparacaoPorTipo);
+        Collections.sort(publicacoes, comparacaoPorTipo); //2
         Publicacao ia = null;
         StringBuilder string = new StringBuilder();
         int count = 0;
@@ -283,7 +283,7 @@ public class Main {
     // codigo 3
     public static String listaDePublicacoesPorAnoTipoFI(ArrayList<Publicacao> publicacoes) {
         StringBuilder string = new StringBuilder();
-        Collections.sort(publicacoes);
+        Collections.sort (publicacoes);
         Publicacao aux = null;
         for (Publicacao i : publicacoes) {
             
