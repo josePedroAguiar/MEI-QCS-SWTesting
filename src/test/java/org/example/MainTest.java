@@ -88,20 +88,21 @@ public class MainTest {
         autores.add(investigadorValido4);
         autores.add(investigadorValido5);
         autores.add(investigadorValido6);
-        Publicacao tipoComMuitosCaracteres = new Publicacao(autores, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", 1050, 2020);
-
+        Publicacao tipoMuitosCaracteres = new Publicacao(autores,
+        "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        1050, 2020);
         ArrayList<Publicacao> publicacoes = new ArrayList<>(Arrays.asList(
                 new Publicacao(autores, "Artigo", 100, 2021),
                 new Publicacao(autores, "Conferência", 200, 2022),
                 new Publicacao(autores, "Livro", 50, 2020),
-                tipoComMuitosCaracteres
+                tipoMuitosCaracteres
         ));
 
 
         String result = Main.nTotalDePublicacoesPorTipo(publicacoes);
 
         // Assert that the result is as expected
-        Assertions.assertEquals("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA:1 Artigo:1 Conferência:1 Livro:1 ", result);
+        Assertions.assertEquals("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA:1 Artigo:1 Conferência:1 Livro:1 ", result);
     }
 
     @Test
@@ -138,65 +139,161 @@ public class MainTest {
 
     @Test
     public void testNTotalDePublicacoesPorTipo_TipoApenasComElementosNumericos() {
-        ArrayList<Publicacao> publicacoes = new ArrayList<>(Collections.singletonList(
-                new Publicacao(new ArrayList<>(), "123", 100, 2021)
+        Investigador investigadorValido = new Investigador("John Doe", "johndoe@example.com", "Professor");
+        Investigador investigadorValido2 = new Investigador("John Q. Public", "johnpublic@example.com", "Professor");
+        Investigador investigadorValido3 = new Investigador("Jane Doe", "janedoe@gmail.com", "Estudante");
+        Investigador investigadorValido4 = new Investigador("Tom Smith", "tomesmith@outlook.com", "Estudante");
+        Investigador investigadorValido5 = new Investigador("Dick Py", "dickpy@example.com", "Estudante");
+        Investigador investigadorValido6 = new Investigador("Harry Jones", "harry@example.com", "Professor");
+
+        ArrayList<Investigador> autores = new ArrayList<>();
+        autores.add(investigadorValido);
+        autores.add(investigadorValido2);
+        autores.add(investigadorValido3);
+        autores.add(investigadorValido4);
+        autores.add(investigadorValido5);
+        autores.add(investigadorValido6);
+        Publicacao tipoApenasNumerico = new Publicacao(autores, "111111", 1050, 2020);
+
+        ArrayList<Publicacao> publicacoes = new ArrayList<>(Arrays.asList(
+                new Publicacao(autores, "Artigo", 100, 2021),
+                new Publicacao(autores, "Conferência", 200, 2022),
+                new Publicacao(autores, "Livro", 50, 2020),
+                tipoApenasNumerico
         ));
 
         String result = Main.nTotalDePublicacoesPorTipo(publicacoes);
 
         // Assert that the result is as expected
-        Assertions.assertEquals("1231", result);
+        Assertions.assertEquals("111111:1 Artigo:1 Conferência:1 Livro:1 ", result);
+
     }
 
     @Test
     public void testNTotalDePublicacoesPorTipo_TipoComCaracteresEspeciais() {
-        ArrayList<Publicacao> publicacoes = new ArrayList<>(Collections.singletonList(
-                new Publicacao(new ArrayList<>(), "!@#$", 100, 2021)
+        Investigador investigadorValido = new Investigador("John Doe", "johndoe@example.com", "Professor");
+        Investigador investigadorValido2 = new Investigador("John Q. Public", "johnpublic@example.com", "Professor");
+        Investigador investigadorValido3 = new Investigador("Jane Doe", "janedoe@gmail.com", "Estudante");
+        Investigador investigadorValido4 = new Investigador("Tom Smith", "tomesmith@outlook.com", "Estudante");
+        Investigador investigadorValido5 = new Investigador("Dick Py", "dickpy@example.com", "Estudante");
+        Investigador investigadorValido6 = new Investigador("Harry Jones", "harry@example.com", "Professor");
+
+        ArrayList<Investigador> autores = new ArrayList<>();
+        autores.add(investigadorValido);
+        autores.add(investigadorValido2);
+        autores.add(investigadorValido3);
+        autores.add(investigadorValido4);
+        autores.add(investigadorValido5);
+        autores.add(investigadorValido6);
+        Publicacao tipoCaracteresEspeciais1 = new Publicacao(autores, "Açarito", 1050, 2020);
+
+        ArrayList<Publicacao> publicacoes = new ArrayList<>(Arrays.asList(
+                new Publicacao(autores, "Artigo", 100, 2021),
+                new Publicacao(autores, "Conferência", 200, 2022),
+                new Publicacao(autores, "Livro", 50, 2020),
+                tipoCaracteresEspeciais1
         ));
 
         String result = Main.nTotalDePublicacoesPorTipo(publicacoes);
 
         // Assert that the result is as expected
-        Assertions.assertEquals("!@#$1", result);
+        Assertions.assertEquals("Artigo:1 Açarito:1 Conferência:1 Livro:1 ", result);
     }
 
     @Test
     public void testNTotalDePublicacoesPorTipo_TipoComCaracterDeEscape() {
-        ArrayList<Publicacao> publicacoes = new ArrayList<>(Collections.singletonList(
-                new Publicacao(new ArrayList<>(), "Tipo\nCom\nCaracter\nDe\nEscape", 100, 2021)
+        Investigador investigadorValido = new Investigador("John Doe", "johndoe@example.com", "Professor");
+        Investigador investigadorValido2 = new Investigador("John Q. Public", "johnpublic@example.com", "Professor");
+        Investigador investigadorValido3 = new Investigador("Jane Doe", "janedoe@gmail.com", "Estudante");
+        Investigador investigadorValido4 = new Investigador("Tom Smith", "tomesmith@outlook.com", "Estudante");
+        Investigador investigadorValido5 = new Investigador("Dick Py", "dickpy@example.com", "Estudante");
+        Investigador investigadorValido6 = new Investigador("Harry Jones", "harry@example.com", "Professor");
+
+        ArrayList<Investigador> autores = new ArrayList<>();
+        autores.add(investigadorValido);
+        autores.add(investigadorValido2);
+        autores.add(investigadorValido3);
+        autores.add(investigadorValido4);
+        autores.add(investigadorValido5);
+        autores.add(investigadorValido6);
+        Publicacao tipoComEscape1 = new Publicacao(autores, "Artigo\\an", 1050, 2020);
+
+        ArrayList<Publicacao> publicacoes = new ArrayList<>(Arrays.asList(
+                new Publicacao(autores, "Artigo", 100, 2021),
+                new Publicacao(autores, "Conferência", 200, 2022),
+                new Publicacao(autores, "Livro", 50, 2020),
+                tipoComEscape1
         ));
 
         String result = Main.nTotalDePublicacoesPorTipo(publicacoes);
 
         // Assert that the result is as expected
-        Assertions.assertEquals("Tipo\nCom\nCaracter\nDe\nEscape1", result);
+        Assertions.assertEquals("Artigo:1 Artigo\\an:1 Conferência:1 Livro:1 ", result);
     }
 
     @Test
     public void testNTotalDePublicacoesPorTipo_TipoComposto() {
+        Investigador investigadorValido = new Investigador("John Doe", "johndoe@example.com", "Professor");
+        Investigador investigadorValido2 = new Investigador("John Q. Public", "johnpublic@example.com", "Professor");
+        Investigador investigadorValido3 = new Investigador("Jane Doe", "janedoe@gmail.com", "Estudante");
+        Investigador investigadorValido4 = new Investigador("Tom Smith", "tomesmith@outlook.com", "Estudante");
+        Investigador investigadorValido5 = new Investigador("Dick Py", "dickpy@example.com", "Estudante");
+        Investigador investigadorValido6 = new Investigador("Harry Jones", "harry@example.com", "Professor");
+
+        ArrayList<Investigador> autores = new ArrayList<>();
+        autores.add(investigadorValido);
+        autores.add(investigadorValido2);
+        autores.add(investigadorValido3);
+        autores.add(investigadorValido4);
+        autores.add(investigadorValido5);
+        autores.add(investigadorValido6);
+        Publicacao tipoComposto = new Publicacao(autores, "Artigo-Cientifico", 1050, 2020);
+
         ArrayList<Publicacao> publicacoes = new ArrayList<>(Arrays.asList(
-                new Publicacao(new ArrayList<>(), "Artigo", 100, 2021),
-                new Publicacao(new ArrayList<>(), "Artigo", 200, 2022),
-                new Publicacao(new ArrayList<>(), "Conferência", 50, 2020),
-                new Publicacao(new ArrayList<>(), "Conferência", 150, 2021)
+                new Publicacao(autores, "Artigo", 100, 2021),
+                new Publicacao(autores, "Conferência", 200, 2022),
+                new Publicacao(autores, "Livro", 50, 2020),
+                tipoComposto
         ));
 
         String result = Main.nTotalDePublicacoesPorTipo(publicacoes);
 
         // Assert that the result is as expected
-        Assertions.assertEquals("Artigo2Conferência2", result);
+        Assertions.assertEquals("Artigo:1 Artigo-Cientifico:1 Conferência:1 Livro:1 ", result);
     }
     /* ALGORITMO 2*/
     @Test
     public void testAudienciaA() {
+        Investigador investigadorValido = new Investigador("John Doe", "johndoe@example.com", "Professor");
+        Investigador investigadorValido2 = new Investigador("John Q. Public", "johnpublic@example.com", "Professor");
+        Investigador investigadorValido3 = new Investigador("Jane Doe", "janedoe@gmail.com", "Estudante");
+        Investigador investigadorValido4 = new Investigador("Tom Smith", "tomesmith@outlook.com", "Estudante");
+        Investigador investigadorValido5 = new Investigador("Dick Py", "dickpy@example.com", "Estudante");
+        Investigador investigadorValido6 = new Investigador("Harry Jones", "harry@example.com", "Professor");
+
+        ArrayList<Investigador> autores1 = new ArrayList<>();
+        ArrayList<Investigador> autores2 = new ArrayList<>();
+        ArrayList<Investigador> autores3 = new ArrayList<>();
+        autores1.add(investigadorValido);
+        //autores1.add(investigadorValido2);
+        autores2.add(investigadorValido3);
+        //autores2.add(investigadorValido4);
+        autores3.add(investigadorValido5);
+        //autores3.add(investigadorValido6);
+
+        Publicacao audienciaA = new Publicacao(autores1, "Artigo", 1050, 2020);
+
         ArrayList<Publicacao> publicacoes = new ArrayList<>(Arrays.asList(
-                new Publicacao(new ArrayList<>(), "Artigo", 100, 2021),
-                new Publicacao(new ArrayList<>(), "Artigo", 200, 2022),
-                new Publicacao(new ArrayList<>(), "Conferência", 50, 2020),
-                new Publicacao(new ArrayList<>(), "Conferência", 150, 2021)
+                new Publicacao(autores2, "Artigo", 2000, 2021),
+                new Publicacao(autores2, "Conferência", 600, 2022),
+                new Publicacao(autores3, "Livro", 50, 2020),
+                audienciaA
         ));
-        String result = Main.nTotalDePublicacoesPorTipo(publicacoes);
-        Assertions.assertEquals("Artigo2Conferência2", result);
+
+        String result = Main.listaDePublicacoesPorFatorDeImpacto(publicacoes);
+
+        // Assert that the result is as expected
+        Assertions.assertEquals("A: Autores Professor John Doe johndoe@example.com Autores JDoe janedoe@gmail.com B: Autores JDoe janedoe@gmail.com C: Autores DPy dickpy@example.com ", result);
     }
 
     @Test

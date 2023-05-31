@@ -406,10 +406,10 @@ public class Main {
         ArrayList<Publicacao> publicacoes = new ArrayList<>();
         ArrayList<Investigador> autores = new ArrayList<>();
         Investigador investigador = new Investigador("John Doe", "johndoe@example.com", "Professor");
-        Publicacao semAutores = new Publicacao(autores, "Revista", 1050, 2020);
-        Publicacao comAutores = new Publicacao(autores, "Revista", 1050, 2020);
+        Publicacao semAutores = new Publicacao(autores, "Artigo", 1050, 2020);
+        Publicacao comAutores = new Publicacao(autores, "Artigo", 1050, 2020);
         Publicacao tipoValido = new Publicacao(autores, "Artigo", 1050, 2020);
-        Publicacao tipoVazio = new Publicacao(autores, "", 1050, 2020);
+        Publicacao tipoVazio = new Publicacao(autores, (String) null, 1050, 2020);
         Publicacao tipoPoucosCaracteres = new Publicacao(autores, "A", 1050, 2020);
         Publicacao tipoMuitosCaracteres = new Publicacao(autores,
                 "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
@@ -421,27 +421,27 @@ public class Main {
         Publicacao tipoComposto = new Publicacao(autores, "Artigo-Cientifico", 1050, 2020);
         Publicacao tipoComEscape1 = new Publicacao(autores, "Artigo\\an", 1050, 2020);
         Publicacao tipoComEscape2 = new Publicacao(autores, "Artigo_Cientifico", 1050, 2020);
-        Publicacao audienciaA = new Publicacao(autores, "Revista", 1050, 2020);
-        Publicacao audienciaB = new Publicacao(autores, "Revista", 600, 2020);
-        Publicacao audienciaC = new Publicacao(autores, "Revista", 300, 2020);
-        Publicacao audienciaNegativa = new Publicacao(autores, "Revista", -230, 2020);
-        // Publicacao audienciaCasasDecimais = new Publicacao(autores, "Revista", 20.5,
+        Publicacao audienciaA = new Publicacao(autores, "Artigo", 1050, 2020);
+        Publicacao audienciaB = new Publicacao(autores, "Artigo", 600, 2020);
+        Publicacao audienciaC = new Publicacao(autores, "Artigo", 300, 2020);
+        Publicacao audienciaNegativa = new Publicacao(autores, "Artigo", -230, 2020);
+        // Publicacao audienciaCasasDecimais = new Publicacao(autores, "Artigo", 20.5,
         // 2020);
-        Publicacao audienciaMuitoGrande = new Publicacao(autores, "Revista", Integer.MAX_VALUE, 2020);
-        // Publicacao audienciaAlfanumerica = new Publicacao(autores, "Revista", "2A2",
+        Publicacao audienciaMuitoGrande = new Publicacao(autores, "Artigo", Integer.MAX_VALUE, 2020);
+        // Publicacao audienciaAlfanumerica = new Publicacao(autores, "Artigo", "2A2",
         // 2020);
-        Publicacao audiencia1000 = new Publicacao(autores, "Revista", 1000, 2020);
-        Publicacao audiencia500 = new Publicacao(autores, "Revista", 500, 2020);
-        Publicacao audiencia0 = new Publicacao(autores, "Revista", 0, 2020);
-        Publicacao audienciaVazia = new Publicacao(autores, "Revista", 0, 2020);
-        Publicacao anoNegativo = new Publicacao(autores, "Revista", -1000, -2000);
-        Publicacao anoFuturo = new Publicacao(autores, "Revista", 1050, 2300);
-        // Publicacao anoCasasDecimais = new Publicacao(autores, "Revista", 1050,
+        Publicacao audiencia1000 = new Publicacao(autores, "Artigo", 1000, 2020);
+        Publicacao audiencia500 = new Publicacao(autores, "Artigo", 500, 2020);
+        Publicacao audiencia0 = new Publicacao(autores, "Artigo", 0, 2020);
+        Publicacao audienciaVazia = new Publicacao(autores, "Artigo", 0, 2020);
+        Publicacao anoNegativo = new Publicacao(autores, "Artigo", -1000, -2000);
+        Publicacao anoFuturo = new Publicacao(autores, "Artigo", 1050, 2300);
+        // Publicacao anoCasasDecimais = new Publicacao(autores, "Artigo", 1050,
         // 2000.2);
-        Publicacao anoMuitoGrande = new Publicacao(autores, "Revista", 1050, Integer.MAX_VALUE);
-        // Publicacao anoAlfanumerico = new Publicacao(autores, "Revista", 1050,
+        Publicacao anoMuitoGrande = new Publicacao(autores, "Artigo", 1050, Integer.MAX_VALUE);
+        // Publicacao anoAlfanumerico = new Publicacao(autores, "Artigo", 1050,
         // "20a0");
-        // Publicacao anoVazio = new Publicacao(autores, "Revista", 1050, "");
+        // Publicacao anoVazio = new Publicacao(autores, "Artigo", 1050, "");
 
     }
 }
